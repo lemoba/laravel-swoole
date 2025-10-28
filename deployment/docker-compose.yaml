@@ -1,0 +1,15 @@
+services:
+  api:
+    image: hihqlink/laravel-swoole:v1
+    environment:
+      PHP_DATE_TIMEZONE: "Asia/Shanghai"
+      AUTORUN_ENABLED: "true"
+      PHP_OPCACHE_ENABLE: "1"
+    ports:
+      - "8080:8080"
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "4"
+          memory: 4G
