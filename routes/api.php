@@ -4,6 +4,6 @@ Route::get('test', function () {
     return response()->json([
         'code' => 0,
         'message' => 'OK',
-        'data' => []
+        'data' => "hello world"
     ]);
 });
