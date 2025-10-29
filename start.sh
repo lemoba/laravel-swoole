@@ -7,6 +7,7 @@ set -e
 OCTANE_TASK_WORKERS=${OCTANE_TASK_WORKERS:-1}
 OCTANE_MAX_REQUESTS=${OCTANE_MAX_REQUESTS:-5000}
 OCTANE_PORT=${OCTANE_PORT:-8000}
+AUTORUN_OPTIMIZE=${AUTORUN_OPTIMIZE:-false}
 
 # -----------------------------
 # 获取 Workers 数量
@@ -39,6 +40,14 @@ else
 
     # workers = CPU 核心数 * 2
     WORKERS=$(( CPU_COUNT * 2 ))
+fi
+
+
+if [ "$AUTORUN_OPTIMIZE" = "true" ]; then
+    echo "⚙️  Running Laravel optimize commands..."
+    php artisan optimize || true
+else
+    echo "⏩  Skipping Laravel optimization (AUTORUN_OPTIMIZE=false)"
 fi
 
 # 打印配置信息
