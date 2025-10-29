@@ -1,0 +1,9 @@
+services:
+  api:
+    build:
+      context: .
+    environment:
+      AUTORUN_OPTIMIZE: "false"
+      OCTANE_WORKERS: "4"
+    ports:
+      - "8081:8000"

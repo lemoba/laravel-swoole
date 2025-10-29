@@ -1,8 +1,0 @@
-services:
-  api:
-    image: hihqlink/laravel-swoole:v2
-    environment:
-      AUTORUN_OPTIMIZE: "false"
-      OCTANE_WORKERS: "6"
-    ports:
-      - "8080:8000"
