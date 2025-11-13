@@ -26,3 +26,4 @@ rr
 .rr.yaml
 laradumps.yaml
 _ide_helper.php
+.phpstorm.meta.php
