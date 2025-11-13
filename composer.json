@@ -8,12 +8,16 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^12.0",
-        "laravel/horizon": "^5.37",
+        "laravel/horizon": "^5.39",
         "laravel/octane": "^2.13",
-        "laravel/tinker": "^2.10.1"
+        "laravel/tinker": "^2.10.1",
+        "spiral/roadrunner-cli": "^2.6.0",
+        "spiral/roadrunner-http": "^3.3.0"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^3.6",
         "fakerphp/faker": "^1.23",
+        "laradumps/laradumps": "^4.0",
         "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.24",
         "laravel/sail": "^1.41",
@@ -34,6 +38,10 @@
         }
     },
     "scripts": {
+        "gen-helper": [
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:meta"
+        ],
         "setup": [
             "composer install",
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",

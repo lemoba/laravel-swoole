@@ -1,4 +1,18 @@
 <?php return array (
+  'barryvdh/laravel-ide-helper' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider',
+    ),
+  ),
+  'laradumps/laradumps' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'LaraDumps\\LaraDumps\\LaraDumpsServiceProvider',
+    ),
+  ),
   'laravel/horizon' => 
   array (
     'aliases' => 

@@ -1,7 +1,10 @@
-FROM hihqlink/php-swoole-cli:8.3
+# FROM registry.cn-shanghai.aliyuncs.com/ranen1024/php-fpm-nginx:php83-v1.0-alpine
+FROM registry.cn-shanghai.aliyuncs.com/ranen1024/php-cli-alpine:8.3-v1
 
-WORKDIR /var/www
+WORKDIR /var/www/html
 
-COPY . /var/www
+COPY --chown=www-data:www-data . .
 
-RUN composer install --no-dev --optimize-autoloader
+RUN ./vendor/bin/rr get-binary
+
+RUN chmod +x ./vendor/bin/rr

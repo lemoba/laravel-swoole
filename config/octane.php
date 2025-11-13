@@ -40,6 +40,14 @@ return [
 
     'server' => env('OCTANE_SERVER', 'roadrunner'),
 
+    'port' => env('OCTANE_SERVER_PORT', 8000),
+
+    'host' => env('OCTANE_SERVER_HOST', '0.0.0.0'),
+
+    'workers' => (int) env('OCTANE_WORKERS', 4),
+
+    'max_requests' => (int) env('OCTANE_MAX_REQUESTS', 500),
+
     /*
     |--------------------------------------------------------------------------
     | Force HTTPS
@@ -220,5 +228,4 @@ return [
     */
 
     'max_execution_time' => 30,
-
 ];

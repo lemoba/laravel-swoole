@@ -1,9 +1,38 @@
 services:
   api:
+    container_name: api
     build:
       context: .
+    command: ["php", "/var/www/html/artisan", "octane:start"]
     environment:
-      AUTORUN_OPTIMIZE: "false"
-      OCTANE_WORKERS: "4"
+      PHP_OPCACHE_ENABLE: "1"
+      PHP_DATE_TIMEZONE: "Asia/Shanghai"
+      AUTORUN_ENABLED: "true"
     ports:
-      - "8081:8000"
+      - "8089:8000"
+
+  horizon:
+    container_name: queue
+    build:
+      context: .
+    command: ["php", "/var/www/html/artisan", "horizon"]
+    environment:
+      PHP_OPCACHE_ENABLE: "1"
+    stop_signal: SIGTERM
+    stop_grace_period: 10s
+    healthcheck:
+      test: ["CMD", "healthcheck-horizon"]
+      start_period: 10s
+
+  task:
+    container_name: task
+    build:
+      context: .
+    command: [ "php", "/var/www/html/artisan", "schedule:work" ]
+    environment:
+      PHP_OPCACHE_ENABLE: "1"
+    stop_signal: SIGTERM
+    stop_grace_period: 10s
+    healthcheck:
+      test: [ "CMD", "healthcheck-schedule" ]
+      start_period: 10s
